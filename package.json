@@ -1,0 +1,22 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/AsyaKnyazeva/frontend-project-12/workflows/hexlet-check/badge.svg)](https://github.com/AsyaKnyazeva/frontend-project-12/actions)",
+  "main": "./src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build --prefix frontend",
+    "start": "start-server -s ./frontend/build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AsyaKnyazeva/frontend-project-12.git"
+  },
+  "author": "Asya Knyazeva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AsyaKnyazeva/frontend-project-12/issues"
+  },
+  "homepage": "https://github.com/AsyaKnyazeva/frontend-project-12#readme"
+}
