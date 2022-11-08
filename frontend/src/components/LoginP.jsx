@@ -1,24 +1,24 @@
 import React, { useContext, useState } from 'react';
 import { Formik, Field, Form } from 'formik';
-import * as yup from 'yup';
 import axios from 'axios';
+import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/index.js';
 import logo from '../logoHex.png';
 
 const LoginSchema = yup.object().shape({
   username: yup.string()
-    .min(3, 'Name must be 3 characters at minimum')
-    .required('Name is required'),
+    .min(3, 'Name must contain 3 characters at least')
+    .required('Please, choose a unique name for registration'),
   password: yup.string()
-    .min(6, 'Password must be 6 characters at minimum')
-    .required('Password is required'),
+    .min(6, 'Password must contain 6 characters at least')
+    .required('Please, set a password'),
 });
 
 const Login = () => {
   const [authFailed, setAuthFailed] = useState(false);
   const navigate = useNavigate();
-  const auth = useContext(AuthContext);
+  const authSession = useContext(AuthContext);
   return (
     <div className="container-fluid h-100">
       <div className="row justify-content-center align-content-center h-100">
@@ -37,7 +37,7 @@ const Login = () => {
                 onSubmit={ async (values, { resetForm }) => {
                   try {
                     const response = await axios.post('/api/v1/login', values);
-                    auth.logIn(response.data);
+                    authSession.logIn(response.data);
                     resetForm();
                     navigate('/');
                   } catch (e) {
@@ -63,7 +63,7 @@ const Login = () => {
                       <label className="form-label" htmlFor="password">Пароль</label>
                     </div>
                     <button type="submit" className="w-100 mb-3 btn btn-outline-primary">Войти</button>
-                    {authFailed ? <div className="alert alert-danger">ошибка sdfvsdfv</div> : null}
+                    {authFailed ? <div className="alert alert-danger">ошибка</div> : null}
                   </Form>
                 )}
               </Formik>
