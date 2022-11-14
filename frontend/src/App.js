@@ -4,12 +4,12 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Navigate,
   Routes,
+  Navigate,
 } from 'react-router-dom';
-import Login from './components/LoginP.jsx';
-import NotFound from './components/NotFoundP.jsx';
-import Home from './components/HomeP.jsx';
+import Login from './components/LoginPage.jsx';
+import NotFound from './components/NotFoundPage.jsx';
+import Home from './components/HomePage.jsx';
 import { AuthContext } from './contexts/index.js';
 import AuthProvider from './contexts/authProvider.js';
 
@@ -43,8 +43,8 @@ function App() {
             </nav>
 
             <Routes>
-              <Route exact path="/login" element={<Login />} />
-              <Route path="/" element={ <PrivateRoute />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<PrivateRoute />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
