@@ -43,7 +43,7 @@ function App() {
             </nav>
 
             <Routes>
-              <Route path="/login" element={<Login />} />
+              <Route exact path="/login" element={<Login />} />
               <Route path="/" element={<PrivateRoute />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
