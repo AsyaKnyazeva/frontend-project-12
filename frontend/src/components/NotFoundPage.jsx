@@ -1,11 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import notFound from '../notFound2.svg';
 
-const NotFound = () => (
-  <div className="text-center">
-      <img alt="Страница не найдена" className="img-fluid h-25" src={notFound} />
-      <h1 className="h4 text-muted">Страница не найдена</h1>
-      <p className="text-muted">Но вы можете перейти <a href="/">на главную страницу</a></p>
+const NotFound = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="text-center">
+      <img alt={t('notFound.notFound')} className="img-fluid h-25" src={notFound} />
+      <h1 className="h4 text-muted">{t('notFound.notFound')}</h1>
+      <p className="text-muted">{t('notFound.text')}<a href="/">{t('notFound.link')}</a></p>
     </div>
 );
+  };
+  
 export default NotFound;
