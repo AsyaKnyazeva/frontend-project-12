@@ -31,5 +31,11 @@ export default {
       text: 'Но вы можете перейти ',
       link: 'на главную страницу',
     },
+    chat: {
+      delivery: 'Network error: message delivery failed',
+      adding: 'Network error: channel adding failed',
+      removing: 'Network error: channel removing failed',
+      renaming: 'Network error: channel renaming failed',
+    },
   },
 };

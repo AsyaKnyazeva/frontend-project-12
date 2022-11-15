@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useSelector } from 'react-redux';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
+import { ApiContext, AuthContext } from '../contexts/index.js';
 import { selectors as channelsSelectors } from '../slices/channelsSlice.js';
 import { selectors as messagesSelectors } from '../slices/messagesSlice.js';
 
@@ -11,8 +12,10 @@ const Messages = () => {
   const messages = useSelector(messagesSelectors.selectAll);
   const { currentChannelId } = useSelector((state) => state.channels);
   const activeChanel = useSelector((state) => channelsSelectors
-    .selectById(state, currentChannelId));
-  const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
+    .selectById(state, currentChannelId)); 
+  const currentMessages = messages.filter((m) => m.chanelId === currentChannelId);
+  const chat = useContext(ApiContext);
+  const auth = useContext(AuthContext);
 
   const validationSchema = yup.object().shape({
     body: yup.string()
@@ -30,10 +33,11 @@ const Messages = () => {
           </span>
         </div>
         <div id="messages-box" className="chat-messages overflow-auto px-5 ">
-          { currentMessages.map((message) => (
-            <div className="text-break mb-2" key={message.id}><b>{message.username}</b>: {message.body}</div>
-          ))}
-        </div>
+        {currentMessages.map((m) => (
+            <div className="text-break mb-2" key={m.id}><b>{m.username}</b>: {m.body}
+            </div>
+                      ))}
+                      </div>
         <div className="mt-auto px-5 py-3">
           <Formik
             initialValues={{
@@ -41,6 +45,13 @@ const Messages = () => {
             }}
             validationSchema={validationSchema}
             onSubmit={ (values, { resetForm }) => {
+              const { body } = values;
+              const data = {
+                body,
+                chanelId: currentChannelId,
+                username: auth.user.username,
+              };
+              chat.sendNewMessage(data);
               resetForm();
             }}
           >

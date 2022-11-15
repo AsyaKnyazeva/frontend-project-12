@@ -1,12 +1,8 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { io } from 'socket.io-client';
+import App from './App.js';
 
+const socket = io();
+const vdom = App(socket);
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
-reportWebVitals();
+root.render(vdom);
