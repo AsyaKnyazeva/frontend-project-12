@@ -15,7 +15,7 @@ const Login = () => {
   const loginSchema = yup.object().shape({
     username: yup.string()
       .trim()
-      .min(3, `${t('errors.min3')}`)
+      .min(3, t('errors.min3'))
       .required(t('errors.required')),
     password: yup.string()
       .trim()

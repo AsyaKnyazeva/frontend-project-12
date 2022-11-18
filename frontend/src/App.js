@@ -17,8 +17,6 @@ import { ApiContext, AuthContext } from './contexts/index.js';
 import buildChatApi from './contexts/buildChatApi.js';
 import AuthProvider from './contexts/authProvider.js';
 import store from './slices/index.js';
-import { actions as channelsActions } from './slices/channelsSlice.js';
-import { actions as messagesActions } from './slices/messagesSlice.js';
 import ru from './locales/ru.js';
 
 const PrivateRoute = () => {
@@ -31,25 +29,6 @@ const App = (socket) => {
     .init({
       resources: { ru },
       lng: 'ru',
-    });
-    socket.on('connect', () => {
-      console.log(socket.id);
-    });
-    socket.on('newMessage', (response) => {
-      store.dispatch(messagesActions.addMessage(response));
-    });
-  
-    socket.on('newChannel', (response) => {
-      store.dispatch(channelsActions.addChannel(response));
-      store.dispatch(channelsActions.setCurrentChannel(response.id));
-    });
-  
-    socket.on('removeChannel', ({ id }) => {
-      store.dispatch(channelsActions.removeChannel(id));
-    });
-  
-    socket.on('renameChannel', ({ id, name }) => {
-      store.dispatch(channelsActions.updateChannel({ id, changes: { name } }));
     });
   
     const chatApi = buildChatApi(socket);

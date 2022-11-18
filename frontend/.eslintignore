@@ -1,4 +1,6 @@
 dist
 node_modules
+build
+public
 src/reportWebVitals.js
 src/App.test.js

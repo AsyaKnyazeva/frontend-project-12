@@ -29,6 +29,12 @@
 .App-link {
   color: #61dafb;
 }
+.btn:hover {
+  border-color: transparent;
+}
+.btn {
+  --bs-btn-focus-box-shadow: transparent;
+}
 
 @keyframes App-logo-spin {
   from {

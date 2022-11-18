@@ -11,9 +11,13 @@ export default {
       auth: 'Ошибка авторизации',
       required: 'Обязательное поле',
       min3: 'Должно быть минимум 3 символа',
+      uniq: 'Должно быть уникальным',
     },
     channels: {
       channels: 'Каналы',
+      manage: 'Управление каналами',
+      delete: 'Удалить',
+      rename: 'Переименовать',
     },
     messages: {
       counter: {
@@ -36,6 +40,15 @@ export default {
       adding: 'Network error: channel adding failed',
       removing: 'Network error: channel removing failed',
       renaming: 'Network error: channel renaming failed',
+    },
+    modal: {
+      add: 'Добавить канал',
+      rename: 'Переименовать канал',
+      removing: 'Удалить канал',
+      remove: 'Удалить',
+      cancel: 'Отменить',
+      send: 'Отправить',
+      question: 'Уверены?',
     },
   },
 };

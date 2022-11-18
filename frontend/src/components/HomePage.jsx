@@ -1,7 +1,9 @@
 import React, { useEffect, useContext } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Row, Container } from 'react-bootstrap';
 import { fetchData } from '../slices/channelsSlice.js';
 import { AuthContext } from '../contexts/index.js';
+import Modal from './Modal.jsx';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
 
@@ -13,14 +15,16 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchData(header));
   }, [dispatch]);
+  const modalType = useSelector((state) => state.modal.type);
 
   return (
-    <div className='container h-100 my-4 overflow-hidden rounded shadow'>
-      <div className='row h-100 bg-white flex-md-row'>
+    <Container className='h-100 my-4 overflow-hidden rounded shadow'>
+    <Row className='h-100 bg-white flex-md-row'>
         <Channels />
         <Messages />
-      </div>
-    </div>
+        </Row>
+      {modalType && <Modal />}
+    </Container>
   );
 };
 export default Home;
