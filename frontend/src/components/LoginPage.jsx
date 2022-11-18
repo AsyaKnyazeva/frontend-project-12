@@ -5,7 +5,8 @@ import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/index.js';
-import logo from '../logoHex.png';
+import routes from '../routes.js';
+import logo from '../images/logoHex.png';
 
 const Login = () => {
   const { t } = useTranslation();
@@ -29,7 +30,7 @@ const Login = () => {
           <div className="card shadow-sm">
             <div className="card-body row p-5">
               <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
-                <img src={logo} className="rounded-circle" alt="Войти" />
+                <img src={logo} className="rounded-circle" alt={t('login.enter')} />
               </div>
               <Formik
                 initialValues={{
@@ -39,10 +40,10 @@ const Login = () => {
                 validationSchema={loginSchema}
                 onSubmit={ async (values, { resetForm }) => {
                   try {
-                    const response = await axios.post('/api/v1/login', values);
+                    const response = await axios.post(routes.loginPath(), values);
                     auth.logIn(response.data);
                     resetForm();
-                    navigate('/');
+                    navigate(routes.root);
                   } catch (e) {
                     setAuthFailed(true);
                   }
