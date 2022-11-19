@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Modal, Form, Button } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import { ApiContext } from '../contexts/index.js';
 import { actions as modalActions } from '../slices/modalSlice.js';
 
@@ -12,14 +13,18 @@ const ModalRemove = () => {
   const dispatch = useDispatch();
 
   const closeModal = () => dispatch(modalActions.closeModal());
-
+  const removeChannel = () => {
+    chatApi.removeChannel({ id: channel });
+    toast.success(t('toast.remove'));
+    dispatch(modalActions.closeModal());
+  };
   return (
     <Modal show centered>
       <Modal.Header closeButton onClick={closeModal}>
         <Modal.Title className='h4'>{t('modal.removing')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={() => chatApi.removeChannel({ id: channel })}>
+        <Form onSubmit={removeChannel}>
           <div>
             <p className='lead'>{t('modal.question')}</p>
             <div className='d-flex justify-content-end'>

@@ -36,7 +36,6 @@ const buildChatApi = (socket) => {
     });
   };
   socket.on('removeChannel', ({ id }) => {
-    console.log('!remove!');
     store.dispatch(channelsActions.removeChannel(id));
   });
   const renameChannel = (channel) => {

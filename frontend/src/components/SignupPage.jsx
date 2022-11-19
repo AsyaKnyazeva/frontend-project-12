@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { toast } from 'react-toastify';
 import {
   Container,
   Row,
@@ -67,6 +68,7 @@ const Signup = () => {
                     if (e.response.status === 409) {
                       setSignupFailed(true);
                     } else {
+                      toast.error(t('errors.network'));
                       throw new Error(t('errors.network'));
                     }
                   }

@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { io } from 'socket.io-client';
-import App from './App.js';
+import App from './App.jsx';
+import 'react-toastify/dist/ReactToastify.css';
 
 const socket = io();
 const vdom = App(socket);

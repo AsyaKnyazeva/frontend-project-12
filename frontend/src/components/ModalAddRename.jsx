@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { Formik } from 'formik';
 import { ApiContext } from '../contexts/index.js';
 import { selectors } from '../slices/channelsSlice.js';
@@ -17,8 +18,14 @@ const ModalForm = () => {
   useEffect(() => inputRef.current.focus(), []);
 
   const closeModal = () => dispatch(modalActions.closeModal());
-  const addChannel = (name) => chatApi.addNewChannel({ removable: true, name });
-  const renameChannel = (name) => chatApi.renameChannel({ id: channel, name });
+  const addChannel = (name) => {
+    chatApi.addNewChannel({ removable: true, name });
+    toast.success(t('toast.add'));
+  };
+  const renameChannel = (name) => {
+    chatApi.renameChannel({ id: channel, name });
+    toast.success(t('toast.rename'));
+  };
 
   const title = type === 'adding' ? t('modal.add') : t('modal.rename');
   const action = type === 'adding' ? addChannel : renameChannel;
@@ -29,7 +36,7 @@ const ModalForm = () => {
   const validationSchema = yup.object().shape({
     name: yup.string()
       .trim()
-      .required(t('errors.requared'))
+      .required(t('errors.required'))
       .notOneOf(channelNames, t('errors.uniq')),
   });
 
