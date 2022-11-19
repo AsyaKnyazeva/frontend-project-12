@@ -23,7 +23,7 @@ import routes from './routes.js';
 
 const PrivateRoute = () => {
   const auth = useContext(AuthContext);
-  return auth.user ? <Home /> : <Navigate replace to="/login" />;
+  return auth.user ? <Home /> : <Navigate replace to={routes.login} />;
 };
 const App = (socket) => {
   i18n

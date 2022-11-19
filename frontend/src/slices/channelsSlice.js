@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createSlice, createEntityAdapter, createAsyncThunk } from '@reduxjs/toolkit';
+import routes from '../routes.js';
 
 const channelsAdapter = createEntityAdapter();
 const initialState = channelsAdapter.getInitialState({
@@ -9,7 +10,7 @@ const initialState = channelsAdapter.getInitialState({
 export const fetchData = createAsyncThunk(
   'fetchData',
   async (header) => {
-    const response = await axios.get('/api/v1/data', { headers: header });
+    const response = await axios.get(routes.dataPath(), { headers: header });
     return response.data;
   },
 );

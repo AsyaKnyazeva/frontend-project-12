@@ -1,8 +1,10 @@
-export default {
+const ru = {
   translation: {
+    hexlet: 'Hexlet Chat',
     login: {
       name: 'Ваше имя',
       enter: 'Войти',
+      exit: 'Выйти',
       password: 'Пароль',
       question: 'Нет аккаунта? ',
       signup: 'Регистрация',
@@ -15,7 +17,6 @@ export default {
       min6: 'Должно быть минимум 6 символов',
       minmax: 'Должно быть от 3 до 20 символов',
       same: 'Пароли должны совпадать',
-      uniq: 'Должно быть уникальным',
       network: 'Ошибка сети',
     },
     channels: {
@@ -65,3 +66,5 @@ export default {
     },
   },
 };
+
+export default ru;
