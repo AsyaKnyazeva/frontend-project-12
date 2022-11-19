@@ -18,6 +18,7 @@ import { ApiContext, AuthContext } from './contexts/index.js';
 import buildChatApi from './contexts/buildChatApi.js';
 import AuthProvider from './contexts/authProvider.js';
 import store from './slices/index.js';
+import leoProfanity from 'leo-profanity';
 import ru from './locales/ru.js';
 import routes from './routes.js';
 
@@ -32,6 +33,9 @@ const App = (socket) => {
       resources: { ru },
       lng: 'ru',
     });
+    leoProfanity.clearList();
+  leoProfanity.add(leoProfanity.getDictionary('en'));
+  leoProfanity.add(leoProfanity.getDictionary('ru'));
   
     const chatApi = buildChatApi(socket);
   return (

@@ -4,9 +4,11 @@ import * as yup from 'yup';
 import { Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
+import leoProfanity from 'leo-profanity';
 import { ApiContext, AuthContext } from '../contexts/index.js';
 import { selectors as channelsSelectors } from '../slices/channelsSlice.js';
 import { selectors as messagesSelectors } from '../slices/messagesSlice.js';
+
 
 const Messages = () => {
   const { t } = useTranslation();
@@ -50,7 +52,7 @@ const Messages = () => {
             onSubmit={ (values, { resetForm }) => {
               const { body } = values;
               const data = {
-                body,
+                body:leoProfanity.clean(body),
                 chanelId: currentChannelId,
                 username: auth.user.username,
               };

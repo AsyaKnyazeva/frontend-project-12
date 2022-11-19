@@ -5,6 +5,7 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { Formik } from 'formik';
+import leoProfanity from 'leo-profanity';
 import { ApiContext } from '../contexts/index.js';
 import { selectors } from '../slices/channelsSlice.js';
 import { actions as modalActions } from '../slices/modalSlice.js';
@@ -50,7 +51,8 @@ const ModalForm = () => {
           initialValues={{ name: '' }}
           validationSchema={validationSchema}
           onSubmit={ ({ name }) => {
-            action(name);
+            const cleanName = leoProfanity.clean(name);
+            action(cleanName);
             closeModal();
           }}
         >
