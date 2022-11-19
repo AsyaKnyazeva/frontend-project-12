@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { Formik, Field, Form } from 'formik';
+import { Formik } from 'formik';
+import { Form } from 'react-bootstrap';
 import * as yup from 'yup';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
@@ -52,23 +53,33 @@ const Login = () => {
                   }
                 }}
               >
-                {({ errors, touched }) => (
-                  <Form className="col-12 col-md-6 mt-3 mt-mb-0">
+                               {({
+                  errors, handleChange, handleSubmit, values,
+                }) => (
+                  <Form onSubmit={handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
                     <h1 className="text-center mb-4">{t('login.enter')}</h1>
-                    <div className="form-floating mb-3">
-                      <Field name="username" className="form-control" placeholder="Ваш ник"/>
-                      {errors.username && touched.username ? (
-                        <div className="alert alert-warning">{errors.username}</div>
-                      ) : null}
-                      <label htmlFor="username">{t('login.name')}</label>
-                    </div>
-                    <div className="form-floating mb-4">
-                      <Field name="password" placeholder="Пароль" className="form-control" />
-                      {errors.password && touched.password ? (
-                        <div className="alert alert-warning">{errors.password}</div>
-                      ) : null}
-                      <label className="form-label" htmlFor="password">{t('login.password')}</label>
-                    </div>
+                    <Form.Group className="form-floating mb-3">
+                      <Form.Control
+                        isInvalid={errors.username}
+                        onChange={handleChange}
+                        name='username'
+                        value={values.username}
+                        placeholder={t('login.name')}
+                      />
+                      <Form.label htmlFor="username">{t('login.name')}</Form.label>
+                      <Form.Control.Feedback type="invalid" tooltip placement="right">{errors.username}</Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group className="form-floating mb-4">
+                      <Form.Control
+                        isInvalid={errors.password}
+                        onChange={handleChange}
+                        name='password'
+                        placeholder={t('login.password')}
+                        value={values.password}
+                      />
+                      <Form.label className="form-label" htmlFor="password">{t('login.password')}</Form.label>
+                      <Form.Control.Feedback type="invalid" tooltip placement="right">{errors.password}</Form.Control.Feedback>
+                    </Form.Group>
                     <button type="submit" className="w-100 mb-3 btn btn-outline-primary">{t('login.enter')}</button>
                     {authFailed ? <div className="alert alert-danger">{t('errors.auth')}</div> : null}
                   </Form>

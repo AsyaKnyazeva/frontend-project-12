@@ -19,8 +19,18 @@ import buildChatApi from './contexts/buildChatApi.js';
 import AuthProvider from './contexts/authProvider.js';
 import store from './slices/index.js';
 import leoProfanity from 'leo-profanity';
+import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import ru from './locales/ru.js';
 import routes from './routes.js';
+
+const rollbarConfig = {
+  accessToken: process.env.REACT_APP_ACCESS_TOKEN,
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+  payload: {
+    environment: process.env.NODE_ENV,
+  },
+};
 
 const PrivateRoute = () => {
   const auth = useContext(AuthContext);
@@ -36,9 +46,11 @@ const App = (socket) => {
     leoProfanity.clearList();
   leoProfanity.add(leoProfanity.getDictionary('en'));
   leoProfanity.add(leoProfanity.getDictionary('ru'));
-  
+
     const chatApi = buildChatApi(socket);
   return (
+    <RollbarProvider config={rollbarConfig}>
+    <ErrorBoundary>
     <React.StrictMode>
     <Provider store={store}>
       <ApiContext.Provider value={chatApi}>
@@ -62,6 +74,8 @@ const App = (socket) => {
         </ApiContext.Provider>
       </Provider>
     </React.StrictMode>
+    </ErrorBoundary>
+    </RollbarProvider>
   );
 };
 
