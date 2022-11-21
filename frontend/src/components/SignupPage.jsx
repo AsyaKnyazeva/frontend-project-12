@@ -75,7 +75,7 @@ const Signup = () => {
                 }}
               >
                 {({
-                  handleSubmit, handleChange, errors, values,
+                  handleSubmit, handleChange, errors, values, isSubmitting,
                 }) => (
                   <Form onSubmit={handleSubmit} className='w-50'>
                     <h1 className='text-center mb-4'>{t('signup.signup')}</h1>
@@ -88,6 +88,7 @@ const Signup = () => {
                         ref={inputRef}
                         name='username'
                         placeholder={t('signup.name')}
+                        disabled={isSubmitting}
                       />
                       <Form.Label htmlFor='username'>{t('signup.name')}</Form.Label>
                       <Form.Control.Feedback type="invalid" tooltip placement="right">{errors.username}</Form.Control.Feedback>
@@ -102,6 +103,7 @@ const Signup = () => {
                         onChange={handleChange}
                         value={values.password}
                         placeholder={t('signup.password')}
+                        disabled={isSubmitting}
                       />
                       <Form.Label htmlFor='password'>{t('signup.password')}</Form.Label>
                       <Form.Control.Feedback type="invalid" tooltip>{errors.password}</Form.Control.Feedback>
@@ -116,11 +118,12 @@ const Signup = () => {
                         onChange={handleChange}
                         value={values.confirmPassword}
                         placeholder={t('signup.confirmPassword')}
+                        disabled={isSubmitting}
                       />
                       <Form.Label htmlFor='confirmPassword'>{t('signup.confirmPassword')}</Form.Label>
                       <Form.Control.Feedback type="invalid" tooltip>{signupFailed ? t('signup.already') : errors.confirmPassword}</Form.Control.Feedback>
                     </Form.Group>
-                    <Button className='w-100' type='submit' variant='outline-primary'>{t('signup.register')}</Button>
+                    <Button className='w-100' disabled={isSubmitting} type='submit' variant='outline-primary'>{t('signup.register')}</Button>
                   </Form>
                 )}
               </Formik>
