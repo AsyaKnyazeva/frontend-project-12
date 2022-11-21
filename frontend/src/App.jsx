@@ -44,35 +44,35 @@ const App = (socket) => {
       resources: { ru },
       lng: 'ru',
     });
-    leoProfanity.clearList();
+  leoProfanity.clearList();
   leoProfanity.add(leoProfanity.getDictionary('en'));
   leoProfanity.add(leoProfanity.getDictionary('ru'));
 
-    const chatApi = buildChatApi(socket);
+  const chatApi = buildChatApi(socket);
   return (
     <RollbarProvider config={rollbarConfig}>
-    <ErrorBoundary>
-    <React.StrictMode>
-    <Provider store={store}>
+      <ErrorBoundary>
+      <React.StrictMode>
+      <Provider store={store}>
       <ApiContext.Provider value={chatApi}>
         <AuthProvider>
           <I18nextProvider i18n={i18n}>
             <Router>
-                <div className="d-flex flex-column h-100">
+              <div className="d-flex flex-column h-100">
                   <Header />
                   <Routes>
-                  <Route exact path={routes.login} element={<Login />} />
-                      <Route path={routes.root} element={<PrivateRoute />} />
-                      <Route path={routes.any} element={<NotFound />} />
-                      <Route path={routes.signup} element={<Signup />} />
+                    <Route exact path={routes.login} element={<Login />} />
+                    <Route path={routes.root} element={<PrivateRoute />} />
+                    <Route path={routes.any} element={<NotFound />} />
+                    <Route path={routes.signup} element={<Signup />} />
                   </Routes>
-                  </div>
-                  <ToastContainer autoClose={3000} />
-              </Router>
-            </I18nextProvider>
-          </AuthProvider>
-        </ApiContext.Provider>
-      </Provider>
+              </div>
+              <ToastContainer autoClose={3000} />
+            </Router>
+          </I18nextProvider>
+        </AuthProvider>
+      </ApiContext.Provider>
+    </Provider>
     </React.StrictMode>
     </ErrorBoundary>
     </RollbarProvider>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button, Navbar, Container } from 'react-bootstrap';
 import { AuthContext } from '../contexts/index.js';
-import { useTranslation } from 'react-i18next';
 import routes from '../routes.js';
 
 const Header = () => {
