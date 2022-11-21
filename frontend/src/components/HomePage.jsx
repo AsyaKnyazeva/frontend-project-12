@@ -14,12 +14,12 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchData(header));
-  }, [dispatch]);
+  }, []);
   const modalType = useSelector((state) => state.modal.type);
 
   return (
-    <Container className='h-100 my-4 overflow-hidden rounded shadow'>
-    <Row className='h-100 bg-white flex-md-row'>
+    <Container className="h-100 my-4 overflow-hidden rounded shadow">
+    <Row className="h-100 bg-white flex-md-row">
         <Channels />
         <Messages />
         </Row>

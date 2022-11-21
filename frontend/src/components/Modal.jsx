@@ -5,7 +5,7 @@ import ModalRemove from './ModalRemove.jsx';
 
 const Modal = () => {
   const { type } = useSelector((state) => state.modal);
-  const Component = type === 'remove' ? ModalRemove : ModalAddRename;
+  const Component = type === "remove" ? ModalRemove : ModalAddRename;
   return (<Component />);
 };
 

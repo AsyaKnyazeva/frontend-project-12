@@ -18,6 +18,7 @@ import { ApiContext, AuthContext } from './contexts/index.js';
 import buildChatApi from './contexts/buildChatApi.js';
 import AuthProvider from './contexts/authProvider.js';
 import store from './slices/index.js';
+import { ToastContainer } from 'react-toastify';
 import leoProfanity from 'leo-profanity';
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import ru from './locales/ru.js';
@@ -57,7 +58,6 @@ const App = (socket) => {
         <AuthProvider>
           <I18nextProvider i18n={i18n}>
             <Router>
-              <div className="h-100" id="chat">
                 <div className="d-flex flex-column h-100">
                   <Header />
                   <Routes>
@@ -67,7 +67,7 @@ const App = (socket) => {
                       <Route path={routes.signup} element={<Signup />} />
                   </Routes>
                   </div>
-                </div>
+                  <ToastContainer autoClose={3000} />
               </Router>
             </I18nextProvider>
           </AuthProvider>

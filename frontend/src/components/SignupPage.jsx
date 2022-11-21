@@ -29,33 +29,33 @@ const Signup = () => {
 
   const signupSchema = yup.object().shape({
     username: yup.string()
-      .required(t('errors.required'))
-      .min(3, t('errors.minmax'))
-      .max(20, t('errors.minmax')),
+      .required(t("errors.required"))
+      .min(3, t("errors.minmax"))
+      .max(20, t("errors.minmax")),
     password: yup.string()
       .trim()
-      .required(t('errors.required'))
-      .min(6, t('errors.min6')),
+      .required(t("errors.required"))
+      .min(6, t("errors.min6")),
     confirmPassword: yup.string()
       .trim()
-      .required(t('errors.required'))
-      .oneOf([yup.ref('password')], t('errors.same')),
+      .required(t("errors.required"))
+      .oneOf([yup.ref("password")], t("errors.same")),
   });
 
   return (
-    <Container fluid className='h-100'>
-      <Row className='justify-content-center align-content-center h-100'>
+    <Container fluid className="h-100">
+      <Row className="justify-content-center align-content-center h-100">
         <Col xs={12} md={8} xxl={6}>
-          <Card className='shadow-sm'>
-            <Card.Body className='d-flex flex-column flex-md-row justify-content-around align-items-center p-5'>
+          <Card className="shadow-sm">
+            <Card.Body className="d-flex flex-column flex-md-row justify-content-around align-items-center p-5">
               <div>
-                <img src={logo} className="rounded-circle" alt={t('signup.signup')} />
+                <img src={logo} className="rounded-circle" alt={t("signup.signup")} />
               </div>
               <Formik
                 initialValues={{
-                  username: '',
-                  password: '',
-                  confirmPassword: '',
+                  username: "",
+                  password: "",
+                  confirmPassword: "",
                 }}
                 validationSchema={signupSchema}
                 onSubmit={ async (values) => {
@@ -68,8 +68,8 @@ const Signup = () => {
                     if (e.response.status === 409) {
                       setSignupFailed(true);
                     } else {
-                      toast.error(t('errors.network'));
-                      throw new Error(t('errors.network'));
+                      toast.error(t("errors.network"));
+                      throw new Error(t("errors.network"));
                     }
                   }
                 }}
@@ -77,53 +77,53 @@ const Signup = () => {
                 {({
                   handleSubmit, handleChange, errors, values, isSubmitting,
                 }) => (
-                  <Form onSubmit={handleSubmit} className='w-50'>
-                    <h1 className='text-center mb-4'>{t('signup.signup')}</h1>
-                    <Form.Group className='form-floating mb-3'>
+                  <Form onSubmit={handleSubmit} className="w-50">
+                    <h1 className="text-center mb-4">{t("signup.signup")}</h1>
+                    <Form.Group className="form-floating mb-3">
                       <Form.Control
                         isInvalid={errors.username || signupFailed}
-                        id='username'
+                        id="username"
                         onChange={handleChange}
                         value={values.username}
                         ref={inputRef}
-                        name='username'
-                        placeholder={t('signup.name')}
+                        name="username"
+                        placeholder={t("signup.name")}
                         disabled={isSubmitting}
                       />
-                      <Form.Label htmlFor='username'>{t('signup.name')}</Form.Label>
+                      <Form.Label htmlFor="username">{t("signup.name")}</Form.Label>
                       <Form.Control.Feedback type="invalid" tooltip placement="right">{errors.username}</Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group className='form-floating mb-3'>
+                    <Form.Group className="form-floating mb-3">
                       <Form.Control
-                        type='password'
+                        type="password"
                         isInvalid={errors.password || signupFailed}
-                        id='password'
-                        name='password'
+                        id="password"
+                        name="password"
                         onChange={handleChange}
                         value={values.password}
-                        placeholder={t('signup.password')}
+                        placeholder={t("signup.password")}
                         disabled={isSubmitting}
                       />
-                      <Form.Label htmlFor='password'>{t('signup.password')}</Form.Label>
+                      <Form.Label htmlFor="password">{t("signup.password")}</Form.Label>
                       <Form.Control.Feedback type="invalid" tooltip>{errors.password}</Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group className='form-floating mb-4'>
+                    <Form.Group className="form-floating mb-4">
                       <Form.Control
-                        type='password'
+                        type="password"
                         isInvalid={errors.confirmPassword || signupFailed}
-                        id='confirmPassword'
-                        name='confirmPassword'
+                        id="confirmPassword"
+                        name="confirmPassword"
                         onChange={handleChange}
                         value={values.confirmPassword}
-                        placeholder={t('signup.confirmPassword')}
+                        placeholder={t("signup.confirmPassword")}
                         disabled={isSubmitting}
                       />
-                      <Form.Label htmlFor='confirmPassword'>{t('signup.confirmPassword')}</Form.Label>
-                      <Form.Control.Feedback type="invalid" tooltip>{signupFailed ? t('signup.already') : errors.confirmPassword}</Form.Control.Feedback>
+                      <Form.Label htmlFor="confirmPassword">{t("signup.confirmPassword")}</Form.Label>
+                      <Form.Control.Feedback type="invalid" tooltip>{signupFailed ? t("signup.already") : errors.confirmPassword}</Form.Control.Feedback>
                     </Form.Group>
-                    <Button className='w-100' disabled={isSubmitting} type='submit' variant='outline-primary'>{t('signup.register')}</Button>
+                    <Button className="w-100" disabled={isSubmitting} type="submit" variant="outline-primary">{t("signup.register")}</Button>
                   </Form>
                 )}
               </Formik>

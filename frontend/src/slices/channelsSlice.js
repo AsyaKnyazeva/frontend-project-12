@@ -37,8 +37,8 @@ const channelsSlice = createSlice({
       }
     }),
     updateChannel: channelsAdapter.updateOne,
-    setCurrentId: (state, actions) => {
-      state.currentChannelId = actions.payload;
+    setCurrentId: (state, action) => {
+      state.currentChannelId = action.payload;
     },
   },
   extraReducers: (builder) => {
