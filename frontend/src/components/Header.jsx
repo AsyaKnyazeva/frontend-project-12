@@ -10,8 +10,8 @@ const Header = () => {
   return (
     <Navbar className="shadow-sm navbar-expand-lg navbar-light bg-white">
       <Container>
-        <a className="navbar-brand" href={routes.root}>{t("hexlet")}</a>
-        {auth.user ? <Button onClick={auth.logOut}>{t("login.exit")}</Button> : null}
+        <a className="navbar-brand" href={routes.root}>{t('hexlet')}</a>
+        {auth.user ? <Button onClick={auth.logOut}>{t('login.exit')}</Button> : null}
       </Container>
     </Navbar>
   );

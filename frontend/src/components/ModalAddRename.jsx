@@ -21,14 +21,14 @@ const ModalForm = () => {
   const closeModal = () => dispatch(modalActions.closeModal());
   const addChannel = (name) => {
     chatApi.addNewChannel({ removable: true, name });
-    toast.success(t("toast.add"));
+    toast.success(t('toast.add'));
   };
   const renameChannel = (name) => {
     chatApi.renameChannel({ id: channel, name });
-    toast.success(t("toast.rename"));
+    toast.success(t('toast.rename'));
   };
 
-  const title = type === "adding" ? t("modal.add") : t("modal.rename");
+  const title = type === "adding" ? t('modal.add') : t('modal.rename');
   const action = type === "adding" ? addChannel : renameChannel;
 
   const channelNames = useSelector(selectors.selectAll)
@@ -37,8 +37,8 @@ const ModalForm = () => {
   const validationSchema = yup.object().shape({
     name: yup.string()
       .trim()
-      .required(t("errors.required"))
-      .notOneOf(channelNames, t("errors.uniq")),
+      .required(t('errors.required'))
+      .notOneOf(channelNames, t('errors.uniq')),
   });
 
   return (
@@ -70,13 +70,13 @@ const ModalForm = () => {
                   value={values.name}
                   ref={inputRef}
                 />
-                <Form.Label htmlFor="name" className="visually-hidden">{t("modal.name")}</Form.Label>
+                <Form.Label htmlFor="name" className="visually-hidden">{t('modal.name')}</Form.Label>
                 {errors.name ? (
                   <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
                 ) : null}
                 <div className="d-flex justify-content-end">
-                  <Button onClick={closeModal} type="button" className="me-2" variant="secondary">{t("modal.cancel")}</Button>
-                  <Button type="submit">{t("modal.send")}</Button>
+                  <Button onClick={closeModal} type="button" className="me-2" variant="secondary">{t('modal.cancel')}</Button>
+                  <Button type="submit">{t('modal.send')}</Button>
                 </div>
               </div>
 

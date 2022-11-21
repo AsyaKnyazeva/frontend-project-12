@@ -1,4 +1,4 @@
-const ru = {
+export default {
   translation: {
     hexlet: 'Hexlet Chat',
     login: {
@@ -73,5 +73,3 @@ const ru = {
     },
   },
 };
-
-export default ru;

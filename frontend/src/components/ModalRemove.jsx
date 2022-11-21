@@ -15,21 +15,21 @@ const ModalRemove = () => {
   const closeModal = () => dispatch(modalActions.closeModal());
   const removeChannel = () => {
     chatApi.removeChannel({ id: channel });
-    toast.success(t("toast.remove"));
+    toast.success(t('toast.remove'));
     dispatch(modalActions.closeModal());
   };
   return (
     <Modal show centered>
       <Modal.Header closeButton onClick={closeModal}>
-        <Modal.Title className="h4">{t("modal.removing")}</Modal.Title>
+        <Modal.Title className="h4">{t('modal.removing')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={removeChannel}>
           <div>
-            <p className="lead">{t("modal.question")}</p>
+            <p className="lead">{t('modal.question')}</p>
             <div className="d-flex justify-content-end">
-              <Button onClick={closeModal} type="button" className="me-2" variant="secondary">{t("modal.cancel")}</Button>
-              <Button type="submit" className="btn-danger">{t("modal.remove")}</Button>
+              <Button onClick={closeModal} type="button" className="me-2" variant="secondary">{t('modal.cancel')}</Button>
+              <Button type="submit" className="btn-danger">{t('modal.remove')}</Button>
             </div>
           </div>
         </Form>

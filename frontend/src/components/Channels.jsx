@@ -17,7 +17,6 @@ const Channels = () => {
   const handleClick = (id) => () => {
   dispatch(channelsActions.setCurrentId(id));
   };
-
   const showModal = (type, channel) => () => {
     dispatch(modalActions.openModal({ type, channel}));
   };
@@ -36,11 +35,11 @@ const Channels = () => {
         className="flex-grow-0 text-end"
         variant={channel.id === currentChannelId ? "secondary" : "light"}
         >
-        <span className="visually-hidden">{t("channels.manage")}</span>
+        <span className="visually-hidden">{t('channels.manage')}</span>
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item onClick={showModal("remove", channel.id)} role="button">{t("channels.delete")}</Dropdown.Item>
-        <Dropdown.Item onClick={showModal("rename", channel.id)} role="button">{t("channels.rename")}</Dropdown.Item>
+        <Dropdown.Item onClick={showModal("remove", channel.id)} role="button">{t('channels.delete')}</Dropdown.Item>
+        <Dropdown.Item onClick={showModal("rename", channel.id)} role="button">{t('channels.rename')}</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
@@ -48,7 +47,7 @@ const Channels = () => {
   return (
     <Col className="col-4 col-md-2 border-end pt-5 px-0 bg-light">
       <div className="d-flex justify-content-between mb-2 ps-4 pe-2">
-        <span>{t("channels.channels")}</span>
+        <span>{t('channels.channels')}</span>
         <Button onClick={showModal("adding")} className="p-0 text-primary btn-group-vertical" variant="link">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
             <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
