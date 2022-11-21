@@ -9,6 +9,9 @@ import {
 import { Provider } from 'react-redux';
 import i18n from 'i18next';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
+import { ToastContainer } from 'react-toastify';
+import leoProfanity from 'leo-profanity';
+import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import Login from './components/LoginPage.jsx';
 import NotFound from './components/NotFoundPage.jsx';
 import Signup from './components/SignupPage.jsx';
@@ -18,9 +21,6 @@ import { ApiContext, AuthContext } from './contexts/index.js';
 import buildChatApi from './contexts/buildChatApi.js';
 import AuthProvider from './contexts/authProvider.js';
 import store from './slices/index.js';
-import { ToastContainer } from 'react-toastify';
-import leoProfanity from 'leo-profanity';
-import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import ru from './locales/ru.js';
 import routes from './routes.js';
 
