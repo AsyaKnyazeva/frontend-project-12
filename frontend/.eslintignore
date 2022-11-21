@@ -4,3 +4,8 @@ build
 public
 src/reportWebVitals.js
 src/App.test.js
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/tests/
+/tests-examples/
