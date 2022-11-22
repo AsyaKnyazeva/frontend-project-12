@@ -22,7 +22,7 @@ export const getAuthHeader = () => {
   }
   return {};
 };
-
+/* eslint-disable no-param-reassign */
 const channelsSlice = createSlice({
   name: 'channels',
   initialState,
@@ -53,7 +53,7 @@ const channelsSlice = createSlice({
       });
   },
 });
-
+/* eslint-disable no-param-reassign */
 export const { actions } = channelsSlice;
 export const selectors = channelsAdapter.getSelectors((state) => state.channels);
 export default channelsSlice.reducer;
