@@ -52,15 +52,15 @@ const App = (socket) => {
   return (
     <RollbarProvider config={rollbarConfig}>
       <ErrorBoundary>
-      <React.StrictMode>
-      <Provider store={store}>
-      <ApiContext.Provider value={chatApi}>
+        <React.StrictMode>
+        <Provider store={store}>
+        <ApiContext.Provider value={chatApi}>
         <AuthProvider>
           <I18nextProvider i18n={i18n}>
             <Router>
               <div className="d-flex flex-column h-100">
-                  <Header />
-                  <Routes>
+                <Header />
+                <Routes>
                     <Route exact path={routes.login} element={<Login />} />
                     <Route path={routes.root} element={<PrivateRoute />} />
                     <Route path={routes.any} element={<NotFound />} />
@@ -71,12 +71,13 @@ const App = (socket) => {
             </Router>
           </I18nextProvider>
         </AuthProvider>
-      </ApiContext.Provider>
-    </Provider>
-    </React.StrictMode>
-    </ErrorBoundary>
+        </ApiContext.Provider>
+        </Provider>
+        </React.StrictMode>
+      </ErrorBoundary>
     </RollbarProvider>
   );
 };
 
 export default App;
+
