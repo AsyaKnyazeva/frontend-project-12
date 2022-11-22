@@ -37,8 +37,8 @@ const Login = () => {
               </div>
               <Formik
                 initialValues={{
-                  username: "",
-                  password: "",
+                  username: '',
+                  password: '',
                 }}
                 validationSchema={loginSchema}
                 onSubmit={async (values, { resetForm }) => {
@@ -53,9 +53,9 @@ const Login = () => {
                   }
                 }}
               >
-                               {({
+                {({
   handleChange, handleSubmit, values, isSubmitting,
-}) => (
+                  }) => (
   <Form onSubmit={handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
     <h1 className="text-center mb-4">{t('login.enter')}</h1>
     <Form.Group className="form-floating mb-3">
@@ -67,10 +67,10 @@ const Login = () => {
         placeholder={t('login.name')}
         id="username"
         disabled={isSubmitting}
-                      />
-                       <Form.Label htmlFor="username">{t('login.name')}</Form.Label>
-                    </Form.Group>
-                    <Form.Group className="form-floating mb-4">
+      />
+      <Form.Label htmlFor="username">{t('login.name')}</Form.Label>
+    </Form.Group>
+    <Form.Group className="form-floating mb-4">
                       <Form.Control
                         onChange={handleChange}
                         isInvalid={authFailed}
@@ -83,9 +83,9 @@ const Login = () => {
                       <Form.Label className="form-label" htmlFor="password">{t('login.password')}</Form.Label>
                       <Form.Control.Feedback type="invalid">{t('errors.auth')}</Form.Control.Feedback>
                     </Form.Group>
-                    <button type="submit" disabled={isSubmitting} className="w-100 mb-3 btn btn-outline-primary">{t('login.enter')}</button>
-                  </Form>
-                )}
+    <button type="submit" disabled={isSubmitting} className="w-100 mb-3 btn btn-outline-primary">{t('login.enter')}</button>
+  </Form>
+                  )}
               </Formik>
             </div>
             <div className="card-footer p-4">

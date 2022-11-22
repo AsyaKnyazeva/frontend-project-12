@@ -54,9 +54,9 @@ const App = (socket) => {
       <ErrorBoundary>
         <React.StrictMode>
           <Provider store={store}>
-          <ApiContext.Provider value={chatApi}>
-          <AuthProvider>
-          <I18nextProvider i18n={i18n}>
+            <ApiContext.Provider value={chatApi}>
+            <AuthProvider>
+            <I18nextProvider i18n={i18n}>
             <Router>
               <div className="d-flex flex-column h-100">
                 <Header />
@@ -70,9 +70,9 @@ const App = (socket) => {
               <ToastContainer autoClose={3000} />
             </Router>
           </I18nextProvider>
-        </AuthProvider>
-        </ApiContext.Provider>
-        </Provider>
+          </AuthProvider>
+          </ApiContext.Provider>
+          </Provider>
         </React.StrictMode>
       </ErrorBoundary>
     </RollbarProvider>
