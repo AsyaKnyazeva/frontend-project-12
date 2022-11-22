@@ -28,8 +28,8 @@ const ModalForm = () => {
     toast.success(t('toast.rename'));
   };
 
-  const title = type === "adding" ? t('modal.add') : t('modal.rename');
-  const action = type === "adding" ? addChannel : renameChannel;
+  const title = type === 'adding' ? t('modal.add') : t('modal.rename');
+  const action = type === 'adding' ? addChannel : renameChannel;
 
   const channelNames = useSelector(selectors.selectAll)
     .map((c) => c.name);
@@ -48,9 +48,9 @@ const ModalForm = () => {
       </Modal.Header>
       <Modal.Body>
         <Formik
-          initialValues={{ name: "" }}
+          initialValues={{ name: '' }}
           validationSchema={validationSchema}
-          onSubmit={ ({ name }) => {
+          onSubmit={({ name }) => {
             const cleanName = leoProfanity.clean(name);
             action(cleanName);
             closeModal();
