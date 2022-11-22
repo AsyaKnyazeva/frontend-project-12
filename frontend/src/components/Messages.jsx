@@ -55,10 +55,10 @@ const Messages = () => {
           {currentMessages.map((m) => (
             <div className="text-break mb-2" key={m.id}>
               <b>{m.username}</b>
-            :
-            {' '}
-            {m.body}
-          </div>
+              :
+              {' '}
+              {m.body}
+            </div>
           ))}
           <span ref={lastMessageRef} />
         </div>

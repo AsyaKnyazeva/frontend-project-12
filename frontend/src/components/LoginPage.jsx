@@ -54,23 +54,23 @@ const Login = () => {
                 }}
               >
                 {({
-  handleChange, handleSubmit, values, isSubmitting,
-                  }) => (
-  <Form onSubmit={handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
-    <h1 className="text-center mb-4">{t('login.enter')}</h1>
-    <Form.Group className="form-floating mb-3">
-      <Form.Control
-        isInvalid={authFailed}
-        onChange={handleChange}
-        name="username"
-        value={values.username}
-        placeholder={t('login.name')}
-        id="username"
-        disabled={isSubmitting}
-      />
-      <Form.Label htmlFor="username">{t('login.name')}</Form.Label>
-    </Form.Group>
-    <Form.Group className="form-floating mb-4">
+                  handleChange, handleSubmit, values, isSubmitting,
+                }) => (
+                  <Form onSubmit={handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
+                    <h1 className="text-center mb-4">{t('login.enter')}</h1>
+                      <Form.Group className="form-floating mb-3">
+                        <Form.Control
+                          isInvalid={authFailed}
+                          onChange={handleChange}
+                          name="username"
+                          value={values.username}
+                          placeholder={t('login.name')}
+                          id="username"
+                          disabled={isSubmitting}
+                        />
+                        <Form.Label htmlFor="username">{t('login.name')}</Form.Label>
+                      </Form.Group>
+                      <Form.Group className="form-floating mb-4">
                       <Form.Control
                         onChange={handleChange}
                         isInvalid={authFailed}
