@@ -39,7 +39,7 @@ const Signup = () => {
     confirmPassword: yup.string()
       .trim()
       .required(t('errors.required'))
-      .oneOf([yup.ref("password")], t('errors.same')),
+      .oneOf([yup.ref('password')], t('errors.same')),
   });
 
   return (
@@ -53,12 +53,12 @@ const Signup = () => {
               </div>
               <Formik
                 initialValues={{
-                  username: "",
-                  password: "",
-                  confirmPassword: "",
+                  username: '',
+                  password: '',
+                  confirmPassword: '',
                 }}
                 validationSchema={signupSchema}
-                onSubmit={ async (values) => {
+                onSubmit={async (values) => {
                   setSignupFailed(false);
                   try {
                     const { data } = await axios.post(routes.signupPath(), values);

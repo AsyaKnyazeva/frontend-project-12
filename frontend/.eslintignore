@@ -9,3 +9,4 @@ src/App.test.js
 /playwright/.cache/
 /tests/
 /tests-examples/
+playwright.config.js
