@@ -20,13 +20,7 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem('user');
     setUser(null);
   };
-  const getAuthHeader = () => {
-    if (currentUser && currentUser.token) {
-      return { Authorization: `Bearer ${currentUser.token}` };
-    }
-    return {};
-  };
-
+  
   return (
     <AuthContext.Provider value={{
       user,
