@@ -1,4 +1,4 @@
-import './App.css';
+import './assets/App.css';
 import React, { useContext } from 'react';
 import {
   BrowserRouter as Router,
