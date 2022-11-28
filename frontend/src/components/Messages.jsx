@@ -83,7 +83,7 @@ const Messages = () => {
             {({ values, handleChange, handleSubmit }) => (
               <Form onSubmit={handleSubmit} className="py-1 border rounded-2">
                 <div className="input-group has-validation">
-                  <input name="body" ref={inputRef} aria-label={t('messages.new')} onChange={handleChange} placeholder={t('messages.input')} autocomplete="off" className="border-0 p-0 ps-2 form-control" value={values.body} />
+                  <input name="body" ref={inputRef} aria-label={t('messages.new')} onChange={handleChange} placeholder={t('messages.input')} autoComplete="off" className="border-0 p-0 ps-2 form-control" value={values.body} />
                   <button type="submit" disabled="" className="btn btn-group-vertical">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="currentColor"><ArrowDownRightSquare /></svg>
                     <span className="visually-hidden">{t('messages.send')}</span>
